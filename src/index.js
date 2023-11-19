@@ -10,7 +10,7 @@ const refs = {
     loadMoreBtn: document.querySelector('.load-more'),
   };
 
-const API_KEY = '40423678-d168429128686f2691e5973ea';
+const API_KEY = '40768794-c5228623910588c08b9f5e45d';
 const BASE_URL = 'https://pixabay.com/api/';
 
 class ApiPixabay {
