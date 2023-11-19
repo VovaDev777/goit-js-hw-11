@@ -20,6 +20,7 @@ class ApiPixabay {
       this.totalPage = null;
     }
   
+    
     async fetchImages() {
       const url = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&safesearch=true&orientation=horizontal&per_page=40&page=${this.page}`;
       return await axios.get(url);
