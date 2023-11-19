@@ -1,32 +1,43 @@
-/* body {
-    font-family: 'Roboto Slab', serif;
-}
-.cat-info {
+.gallery {
     display: flex;
-    margin-top: 100px;
-    gap: 50px;
-}
-.info {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .info-item {
     display: flex;
     flex-direction: column;
-    width: 600px;
-    justify-content: start;
-}
-.cat-img {
-    align-content: start;
-}
-
-.cat-name {
-    text-align: center;
-}
-.temperament {
-    font-size: larger;
-    font-weight: 700;
-}
-.loader {
-    opacity: 0;
-}
-
-.visible {
-    opacity: 1;
-} */
+    align-items: center;
+  }
+  
+  .load-more {
+    margin: 25px auto;
+    display: block;
+    height: 30px;
+  }
+  
+  .search-form {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  input {
+    height: 25px;
+    width: 200px;
+  }
+  
+  .search-btn {
+    width: 100px;
+  }
