@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: 'Roboto Slab', serif;
 }
 .cat-info {
@@ -10,7 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 600px;
-    /* align-items: start; */
     justify-content: start;
 }
 .cat-img {
@@ -30,8 +29,4 @@ body {
 
 .visible {
     opacity: 1;
-}
-
-/* .breed-select {
-    di
 } */
