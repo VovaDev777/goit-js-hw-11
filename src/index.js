@@ -44,6 +44,34 @@ refs.form.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 const lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
 
+function smoothScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+}
+
+async function onLoadMore() {
+  apiPixabay.incrementPage();
+  try {
+    const card = await getData();
+    apiPixabay.totalPage = Math.ceil(card.totalHits / 40);
+    renderMarkup(card.hits);
+    smoothScroll();
+    if (apiPixabay.totalPage === apiPixabay.page) {
+      onEndCollection();
+      refs.loadMoreBtn.classList.add('hidden');
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  lightbox.refresh();
+}
+
 async function onSearch(e) {
   e.preventDefault();
   refs.gallery.innerHTML = '';
@@ -83,23 +111,6 @@ async function getData() {
   const response = await apiPixabay.fetchImages();
   const res = await response.data;
   return res;
-}
-
-async function onLoadMore() {
-  apiPixabay.incrementPage();
-  try {
-    const card = await getData();
-    apiPixabay.totalPage = Math.ceil(card.totalHits / 40);
-    renderMarkup(card.hits);
-    smoothScroll();
-    if (apiPixabay.totalPage === apiPixabay.page) {
-      onEndCollection();
-      refs.loadMoreBtn.classList.add('hidden');
-    }
-  } catch (err) {
-    console.log(err);
-  }
-  lightbox.refresh();
 }
 
 function onError(message) {
@@ -156,4 +167,8 @@ function renderMarkup(data) {
     refs.gallery.insertAdjacentHTML('beforeend', markup);
   }
 
- 
+  function onEndCollection() {
+    return Notify.success(
+      `"We're sorry, but you've reached the end of search results."`
+    );
+  }
